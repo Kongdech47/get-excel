@@ -56,6 +56,17 @@ $("#fileUploader").change(function(evt) {
 
             excelData = XL_row_object;
             console.log(excelData);
+
+            $.ajax({
+                type: 'POST',
+                url: 'php.php',
+                data: excelData,
+                dataType: 'json',
+                cache: false,
+                success: function(result) {
+                    console.log(result);
+                },
+            });
         };
 
         XLreader.onerror = function(event) {
