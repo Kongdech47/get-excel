@@ -54,13 +54,31 @@ $("#fileUploader").change(function(evt) {
                 });
             }
 
+            XL_row_object = XL_row_object.map(function(val, index) {
+                var newArray = [];
+                for (var key in val) {
+                    if(mapCellKey[key]){
+                        newArray[mapCellKey[key]] = val[key];
+                    }else{
+                        newArray[key] = val[key];
+                    }
+                }
+                return Object.assign({}, newArray)
+            });
+
             excelData = XL_row_object;
             console.log(excelData);
+
+            var xxxx = {
+                name: 'test',
+                data: excelData
+            };
+            console.log(xxxx);
 
             $.ajax({
                 type: 'POST',
                 url: 'php.php',
-                data: excelData,
+                data: xxxx,
                 dataType: 'json',
                 cache: false,
                 success: function(result) {
