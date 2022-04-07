@@ -1,4 +1,4 @@
-var startRow = 7;
+var startRow = 1;
 var excelData = [];
 var mapCell = [
     {
